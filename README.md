@@ -1,2 +1,2 @@
 # Mersal
-A private collection of interactive digital greeting cards and web widgets.
+A creative portfolio showcasing interactive digital cards and web widgets.
