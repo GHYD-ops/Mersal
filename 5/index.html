@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #F3E5AB;
+      --bg-dark: #070709;
+      --bg-glow: #1A1813;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(circle at 50% 50%, var(--bg-glow) 0%, var(--bg-dark) 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      padding: 20px;
+      color: #FFF;
+    }
+    
+    /* Elegant Ambient Stars */
+    .stars {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .star {
+      position: absolute;
+      background: var(--gold-light);
+      border-radius: 50%;
+      animation: twinkle 4s infinite ease-in-out;
+      box-shadow: 0 0 8px var(--gold);
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.1; transform: scale(0.8); }
+      50% { opacity: 0.6; transform: scale(1.2); }
+    }
+    
+    /* Glassmorphism Luxury Card */
+    .birthday-card {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 20px;
+      padding: 50px 40px;
+      text-align: center;
+      max-width: 480px;
+      width: 100%;
+      z-index: 10;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 20px rgba(212, 175, 55, 0.05);
+      animation: card-appear 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    @keyframes card-appear {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .elegant-icon {
+      font-size: 28px;
+      color: var(--gold);
+      margin-bottom: 20px;
+      letter-spacing: 10px;
+      opacity: 0.8;
+    }
+    
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin: 10px 0;
+      letter-spacing: 1px;
+      text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    }
+    
+    .subtitle {
+      color: #A09C94;
+      font-size: 14px;
+      letter-spacing: 4px;
+      margin-bottom: 30px;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+    
+    .age-display {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--gold);
+      margin: 15px 0 25px;
+      text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+    }
+    
+    .message-box {
+      margin: 25px 0;
+      min-height: 100px;
+    }
+    
+    .message-text {
+      color: #D9D9D9;
+      font-size: 15px;
+      line-height: 2;
+      font-weight: 300;
+    }
+    
+    /* Elegant Buttons */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .btn-elegant {
+      background: transparent;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      color: var(--gold-light);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 35px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      width: 80%;
+      max-width: 260px;
+    }
+    .btn-elegant:hover {
+      background: rgba(212, 175, 55, 0.1);
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+    
+    .signature {
+      color: #8C8880;
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-top: 40px;
+      text-transform: uppercase;
+    }
+    
+    /* Fireworks Canvas */
+    #fireworks-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 20;
+    }
+    
+    .gold-dust {
+      position: fixed;
+      width: 3px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: sparkle-anim 1.5s ease-out forwards;
+      pointer-events: none;
+      z-index: 25;
+      box-shadow: 0 0 6px var(--gold-light);
+    }
+    @keyframes sparkle-anim {
+      0% { transform: translateY(0) scale(0); opacity: 1; }
+      100% { transform: translateY(-50px) scale(2); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Background -->
+  <div class="stars" id="stars"></div>
+  
+  <!-- Fireworks Canvas -->
+  <canvas id="fireworks-canvas"></canvas>
+  
+  <!-- Main Card -->
+  <div class="birthday-card">
+    <div class="elegant-icon">✦ ✧ ✦</div>
+    <div class="title">Happy Birthday</div>
+    <div class="subtitle">1.1.2000</div>
+    
+    <div class="age-display" id="age-counter">0</div>
+    
+    <div class="message-box">
+      <div class="message-text" id="typed-message"></div>
+    </div>
+    
+    <div class="btn-group">
+      <button class="btn-elegant" onclick="launchBigFirework()">✨ Ignite Magic</button>
+      <button class="btn-elegant" id="music-btn" onclick="toggleMusic()">🎵 Play Melody</button>
+    </div>
+    
+    <div class="signature">With all love MERSAL</div>
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="3gbal100.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // ===== AMBIENT STARS =====
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 60; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      const size = Math.random() * 2 + 1;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.animationDelay = Math.random() * 4 + 's';
+      starsContainer.appendChild(star);
+    }
+    
+    // ===== CINEMATIC TYPING EFFECT =====
+    const message = "On this beautiful day, I wish you a year filled with joy, success, and love. You are an incredible soul, and I am endlessly lucky to have you in my life. May your days always shine as brightly as you do.";
+    const typedElement = document.getElementById('typed-message');
+    let charIndex = 0;
+    
+    function typeWriter() {
+      if (charIndex < message.length) {
+        typedElement.textContent += message.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWriter, 45);
+      }
+    }
+    setTimeout(typeWriter, 1200);
+    
+    // ===== ELEGANT AGE COUNTER =====
+    const ageCounter = document.getElementById('age-counter');
+    let currentAge = 0;
+    const targetAge = 20; 
+    
+    function animateAge() {
+      if (currentAge < targetAge) {
+        currentAge++;
+        ageCounter.textContent = currentAge;
+        setTimeout(animateAge, 90);
+      }
+    }
+    setTimeout(animateAge, 1000);
+    
+    // ===== GOLD LUXURY FIREWORKS =====
+    const canvas = document.getElementById('fireworks-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+    
+    class Particle {
+      constructor(x, y, color, velocity) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.velocity = velocity;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.015 + 0.01;
+        this.gravity = 0.04;
+      }
+      update() {
+        this.velocity.x *= 0.98;
+        this.velocity.y *= 0.98;
+        this.velocity.y += this.gravity;
+        this.x += this.velocity.x;
+        this.y += this.velocity.y;
+        this.alpha -= this.decay;
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+    
+    class Firework {
+      constructor(x, y, targetY, color) {
+        this.x = x;
+        this.y = y;
+        this.targetY = targetY;
+        this.color = color;
+        this.velocity = { x: 0, y: -Math.random() * 2 - 5 };
+        this.exploded = false;
+        this.particles = [];
+      }
+      update() {
+        if (!this.exploded) {
+          this.velocity.y += 0.06;
+          this.y += this.velocity.y;
+          if (this.velocity.y >= 0 || this.y <= this.targetY) {
+            this.explode();
+          }
+        } else {
+          this.particles.forEach((p, i) => {
+            p.update();
+            if (p.alpha <= 0) this.particles.splice(i, 1);
+          });
+        }
+      }
+      draw() {
+        if (!this.exploded) {
+          ctx.save();
+          ctx.fillStyle = '#FFF8DC';
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+        this.particles.forEach(p => p.draw());
+      }
+      explode() {
+        this.exploded = true;
+        const particleCount = 60;
+        for (let i = 0; i < particleCount; i++) {
+          const angle = (Math.PI * 2 / particleCount) * i + Math.random() * 0.5;
+          const speed = Math.random() * 4 + 1;
+          this.particles.push(new Particle(
+            this.x, this.y, this.color,
+            { x: Math.cos(angle) * speed, y: Math.sin(angle) * speed }
+          ));
+        }
+      }
+    }
+    
+    const fireworks = [];
+    const luxuryColors = ['#D4AF37', '#F3E5AB', '#FFD700', '#FFF8DC', '#E6C27A'];
+    
+    function launchFirework(x, y) {
+      const color = luxuryColors[Math.floor(Math.random() * luxuryColors.length)];
+      fireworks.push(new Firework(x, window.innerHeight, y, color));
+    }
+    
+    function launchBigFirework() {
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => {
+          launchFirework(
+            Math.random() * canvas.width * 0.8 + canvas.width * 0.1,
+            Math.random() * canvas.height * 0.4 + 50
+          );
+        }, i * 300);
+      }
+    }
+    
+    setTimeout(() => launchBigFirework(), 2500);
+    
+    document.body.addEventListener('click', (e) => {
+      if (e.target.tagName !== 'BUTTON') {
+        launchFirework(e.clientX, e.clientY);
+        for(let i=0; i<5; i++) {
+            const dust = document.createElement('div');
+            dust.className = 'gold-dust';
+            dust.style.left = (e.clientX - 10 + Math.random()*20) + 'px';
+            dust.style.top = (e.clientY - 10 + Math.random()*20) + 'px';
+            document.body.appendChild(dust);
+            setTimeout(() => dust.remove(), 1500);
+        }
+      }
+    });
+    
+    function animate() {
+      // تم الإصلاح هنا: مسح الشاشة بالكامل بدلاً من تلوينها بالأسود
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      fireworks.forEach((fw, i) => {
+        fw.update();
+        fw.draw();
+        if (fw.exploded && fw.particles.length === 0) {
+          fireworks.splice(i, 1);
+        }
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+    
+    // ===== AUDIO CONTROLLER =====
+    function toggleMusic() {
+      const audio = document.getElementById('bg-music');
+      const btn = document.getElementById('music-btn');
+      
+      if (audio.paused) {
+        audio.play();
+        btn.innerHTML = '⏸ Pause Melody';
+        btn.style.background = 'rgba(212, 175, 55, 0.15)';
+      } else {
+        audio.pause();
+        btn.innerHTML = '🎵 Play Melody';
+        btn.style.background = 'transparent';
+      }
+    }
+  </script>
+</body>
+</html>
